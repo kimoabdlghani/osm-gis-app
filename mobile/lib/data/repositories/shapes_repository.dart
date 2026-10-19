@@ -17,7 +17,7 @@ class ShapesRepository {
   }) : _client = client ?? http.Client();
 
   /// Fetch all saved features from Node.js backend
-  async Future<List<GisFeature>> fetchShapes() async {
+  Future<List<GisFeature>> fetchShapes() async {
     try {
       final uri = Uri.parse('$baseUrl/api/shapes');
       final res = await _client.get(uri).timeout(const Duration(seconds: 4));

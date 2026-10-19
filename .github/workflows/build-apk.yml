@@ -29,16 +29,18 @@ jobs:
       - name: Verify Flutter Installation
         run: flutter doctor -v
 
-      - name: Initialize Flutter Android Wrapper & Get Dependencies
+      - name: Initialize Flutter Android Wrapper & Permissions
         run: |
           cd mobile
           flutter create . --org com.mapstudio --project-name map_studio_gis --platforms android
+          # Inject Internet and Location permissions for Leaflet & GPS
+          sed -i '/<manifest/a \    <uses-permission android:name="android.permission.INTERNET"/>\n    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>\n    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>' android/app/src/main/AndroidManifest.xml
           flutter pub get
 
       - name: Build Flutter Release APK (Direct GPU Engine)
         run: |
           cd mobile
-          flutter build apk --release
+          flutter build apk --release --no-tree-shake-icons
 
       - name: Upload Native Flutter APK Artifact
         uses: actions/upload-artifact@v4
