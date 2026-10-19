@@ -1,0 +1,32 @@
+name: map_studio_gis
+description: High-performance interactive GIS mobile application built with Flutter and flutter_map.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Map & GIS Core Engine (Direct GPU Rendering)
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+
+  # HTTP Networking for Node.js REST API
+  http: ^1.2.2
+
+  # Device Hardware Geolocation
+  geolocator: ^13.0.1
+
+  # UI Icons & Typography
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
