@@ -1,0 +1,6 @@
+{
+  "appId": "com.mapstudio.gis",
+  "appName": "Map Studio GIS",
+  "webDir": "public",
+  "bundledWebRuntime": false
+}
