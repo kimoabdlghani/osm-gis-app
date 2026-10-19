@@ -35,6 +35,9 @@ jobs:
           flutter create . --org com.mapstudio --project-name map_studio_gis --platforms android
           # Inject Internet and Location permissions for Leaflet & GPS
           sed -i '/<manifest/a \    <uses-permission android:name="android.permission.INTERNET"/>\n    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>\n    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>' android/app/src/main/AndroidManifest.xml
+          # Ensure minSdk is at least 21 for geolocator
+          sed -i 's/minSdkVersion = flutter.minSdkVersion/minSdkVersion = 21/g' android/app/build.gradle 2>/dev/null || true
+          sed -i 's/minSdk = flutter.minSdkVersion/minSdk = 21/g' android/app/build.gradle.kts 2>/dev/null || true
           flutter pub get
 
       - name: Build Flutter Release APK (Direct GPU Engine)

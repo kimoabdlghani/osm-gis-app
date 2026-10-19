@@ -78,8 +78,9 @@ class _MapScreenState extends State<MapScreen> {
                   initialZoom: MapConfig.defaultZoom,
                   minZoom: MapConfig.minZoom,
                   maxZoom: MapConfig.maxZoom,
-                  onTap: (_, point) => widget.controller.handleMapTap(point),
-                  onDoubleTap: (_, __) => widget.controller.cancelDrawing(),
+                  onTap: (tapPos, point) => widget.controller.handleMapTap(point),
+                  onLongPress: (tapPos, point) => widget.controller.cancelDrawing(),
+                  onSecondaryTap: (tapPos, point) => widget.controller.cancelDrawing(),
                 ),
                 children: [
                   // Base Tile Layer
